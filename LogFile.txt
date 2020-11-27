@@ -1,0 +1,330 @@
+2020-10-22 13:03:42.819 +03:00 [INF] Worker service is starting...
+2020-10-22 13:03:44.884 +03:00 [FTL] The worker caught an exception.
+System.ArgumentException: Invalid value for key 'integrated security'.
+   at Microsoft.Data.Common.DbConnectionOptions.ConvertValueToIntegratedSecurityInternal(String stringValue)
+   at Microsoft.Data.Common.DbConnectionOptions.ConvertValueToIntegratedSecurity()
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Microsoft.Data.SqlClient.SqlConnection..ctor(String connectionString)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.CreateDbConnection()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.get_DbConnection()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.CreateCommand(RelationalCommandParameterObject parameterObject, Guid commandId, DbCommandMethod commandMethod)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementation[TState,TResult](Func`3 operation, Func`3 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at TestWorkService.DataBase.LinkPositionDataAccess.getAllKeywords() in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\DataBase\LinkPositionDataAccess.cs:line 51
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 35
+2020-10-22 13:04:55.007 +03:00 [INF] Worker service is starting...
+2020-10-22 13:05:20.568 +03:00 [FTL] The worker caught an exception.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot open database "SearchEngine" requested by the login. The login failed.
+Login failed for user 'Koko'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementation[TState,TResult](Func`3 operation, Func`3 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at TestWorkService.DataBase.LinkPositionDataAccess.getAllKeywords() in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\DataBase\LinkPositionDataAccess.cs:line 51
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 35
+ClientConnectionId:9835dafe-e0b5-4fc4-ba8e-755f82fb16fa
+Error Number:4060,State:1,Class:11
+2020-10-22 13:13:16.292 +03:00 [INF] Worker service is starting...
+2020-10-22 13:13:39.498 +03:00 [INF] Worker searched for: coffee
+2020-10-22 13:13:43.769 +03:00 [INF] Worker searched for: sport
+2020-10-22 13:13:45.816 +03:00 [INF] Worker searched for: tennis
+2020-10-22 13:22:50.723 +03:00 [INF] Worker service is starting...
+2020-10-22 13:23:23.842 +03:00 [FTL] The worker caught an exception.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Login failed for user 'Koko'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementation[TState,TResult](Func`3 operation, Func`3 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at TestWorkService.DataBase.LinkPositionDataAccess.getAllKeywords() in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\DataBase\LinkPositionDataAccess.cs:line 51
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 35
+ClientConnectionId:7b4858a3-b240-4e97-829e-32951d1fed5c
+Error Number:18456,State:1,Class:14
+2020-10-22 13:25:26.990 +03:00 [INF] Worker service is starting...
+2020-10-22 13:25:37.158 +03:00 [INF] Worker searched for: coffee
+2020-10-22 13:25:39.548 +03:00 [INF] Worker searched for: sport
+2020-10-22 13:25:41.971 +03:00 [INF] Worker searched for: tennis
+2020-10-26 09:30:12.008 +02:00 [INF] Worker service is starting...
+2020-10-26 09:30:26.574 +02:00 [INF] Worker searched for: coffee
+2020-10-26 09:30:28.576 +02:00 [INF] Worker searched for: sport
+2020-10-26 09:30:30.718 +02:00 [INF] Worker searched for: tennis
+2020-10-26 12:57:44.882 +02:00 [INF] Worker service is starting...
+2020-10-26 12:58:14.283 +02:00 [INF] Worker searched for: coffee
+2020-10-26 12:58:16.426 +02:00 [INF] Worker searched for: sport
+2020-10-26 12:58:18.564 +02:00 [INF] Worker searched for: tennis
+2020-10-30 14:45:29.251 +02:00 [INF] Worker service is starting...
+2020-10-30 14:45:44.878 +02:00 [INF] Worker searched for: coffee
+2020-10-30 14:45:47.201 +02:00 [INF] Worker searched for: sport
+2020-10-30 14:45:49.128 +02:00 [INF] Worker searched for: tennis
+2020-10-30 14:56:53.983 +02:00 [INF] The worker is shutting down.
+2020-10-30 14:56:53.984 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-10-30 14:56:59.114 +02:00 [INF] Worker service is starting...
+2020-10-30 14:57:07.280 +02:00 [INF] Worker searched for: coffee
+2020-10-30 14:57:09.169 +02:00 [INF] Worker searched for: sport
+2020-10-30 14:57:11.162 +02:00 [INF] Worker searched for: tennis
+2020-10-30 14:57:35.102 +02:00 [INF] The worker is shutting down.
+2020-10-30 14:57:35.163 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-02 09:28:48.783 +02:00 [INF] Worker service is starting...
+2020-11-02 09:29:02.061 +02:00 [INF] Worker searched for: coffee
+2020-11-02 09:29:04.404 +02:00 [INF] Worker searched for: sport
+2020-11-02 09:29:06.858 +02:00 [INF] Worker searched for: tennis
+2020-11-03 09:31:56.782 +02:00 [INF] Worker service is starting...
+2020-11-03 09:32:05.192 +02:00 [INF] Worker searched for: coffee
+2020-11-03 09:32:07.423 +02:00 [INF] Worker searched for: sport
+2020-11-03 09:32:09.716 +02:00 [INF] Worker searched for: tennis
+2020-11-06 10:58:45.226 +02:00 [INF] Worker service is starting...
+2020-11-06 10:59:06.759 +02:00 [INF] Worker searched for: coffee
+2020-11-06 10:59:09.237 +02:00 [INF] Worker searched for: sport
+2020-11-06 10:59:11.574 +02:00 [INF] Worker searched for: tennis
+2020-11-06 11:29:43.712 +02:00 [INF] Worker service is starting...
+2020-11-06 11:30:12.704 +02:00 [INF] Worker searched for: coffee
+2020-11-06 11:30:15.089 +02:00 [INF] Worker searched for: sport
+2020-11-06 11:30:17.236 +02:00 [INF] Worker searched for: tennis
+2020-11-10 12:21:02.647 +02:00 [INF] Worker service is starting...
+2020-11-10 12:24:56.276 +02:00 [INF] Worker searched for: coffee
+2020-11-10 12:33:16.435 +02:00 [INF] Worker searched for: sport
+2020-11-10 12:58:58.083 +02:00 [INF] Worker searched for: tennis
+2020-11-11 10:50:01.230 +02:00 [INF] Worker service is starting...
+2020-11-11 10:50:56.218 +02:00 [INF] Worker searched for: coffee
+2020-11-11 10:51:30.029 +02:00 [INF] Worker searched for: sport
+2020-11-11 10:51:55.446 +02:00 [INF] Worker searched for: tennis
+2020-11-11 16:14:25.307 +02:00 [INF] Worker service is starting...
+2020-11-11 16:15:08.317 +02:00 [INF] Worker searched for: coffee
+2020-11-11 16:15:10.806 +02:00 [INF] Worker searched for: sport
+2020-11-11 16:15:13.974 +02:00 [INF] Worker searched for: tennis
+2020-11-16 11:18:51.071 +02:00 [INF] Worker service is starting...
+2020-11-16 11:19:44.308 +02:00 [INF] Worker searched for: coffee
+2020-11-16 11:20:23.017 +02:00 [INF] Worker searched for: sport
+2020-11-16 11:20:47.591 +02:00 [INF] Worker searched for: tennis
+2020-11-16 11:29:28.073 +02:00 [INF] The worker is shutting down.
+2020-11-16 11:29:28.159 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-16 11:49:44.786 +02:00 [INF] Worker service is starting...
+2020-11-16 11:51:56.372 +02:00 [FTL] The worker caught an exception.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 50 - Local Database Runtime error occurred. Error occurred during LocalDB instance startup: SQL Server process failed to start.
+)
+ ---> System.ComponentModel.Win32Exception (0x89C5010A): Unknown error (0x89c5010a)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementation[TState,TResult](Func`3 operation, Func`3 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at TestWorkService.DataBase.LinkPositionDataAccess.getAllKeywords() in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\DataBase\LinkPositionDataAccess.cs:line 62
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 35
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1983577846,State:0,Class:20
+2020-11-17 10:05:34.089 +02:00 [INF] Worker service is starting...
+2020-11-17 10:06:15.699 +02:00 [INF] Worker searched for: coffee
+2020-11-17 10:06:50.178 +02:00 [INF] Worker searched for: sport
+2020-11-17 10:07:13.010 +02:00 [INF] Worker searched for: tennis
+2020-11-17 10:07:49.820 +02:00 [INF] The worker is shutting down.
+2020-11-17 10:07:49.912 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-17 10:49:26.600 +02:00 [INF] Worker service is starting...
+2020-11-17 10:49:44.018 +02:00 [FTL] The worker caught an exception.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Login failed for user 'Koko'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementation[TState,TResult](Func`3 operation, Func`3 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at TestWorkService.DataBase.LinkPositionDataAccess.getAllKeywords() in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\DataBase\LinkPositionDataAccess.cs:line 62
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 35
+ClientConnectionId:fdccc5e7-8268-4675-9f40-a994e18ae08f
+Error Number:18456,State:1,Class:14
+2020-11-17 10:51:47.925 +02:00 [INF] Worker service is starting...
+2020-11-17 10:52:13.982 +02:00 [INF] Worker searched for: coffee
+2020-11-17 10:52:47.443 +02:00 [INF] Worker searched for: sport
+2020-11-17 10:53:07.479 +02:00 [INF] Worker searched for: tennis
+2020-11-17 15:19:57.630 +02:00 [INF] The worker is shutting down.
+2020-11-17 15:19:57.657 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-17 15:23:51.374 +02:00 [INF] Worker service is starting...
+2020-11-17 15:24:38.191 +02:00 [INF] Worker searched for: coffee
+2020-11-17 15:25:22.408 +02:00 [INF] Worker searched for: sport
+2020-11-17 15:25:52.738 +02:00 [INF] Worker searched for: tennis
+2020-11-17 15:29:03.928 +02:00 [INF] The worker is shutting down.
+2020-11-17 15:29:03.962 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-17 15:34:38.967 +02:00 [INF] Worker service is starting...
+2020-11-17 15:35:10.173 +02:00 [INF] Worker searched for: coffee
+2020-11-17 15:35:45.285 +02:00 [INF] Worker searched for: sport
+2020-11-17 15:36:06.888 +02:00 [INF] Worker searched for: tennis
+2020-11-18 09:43:08.442 +02:00 [INF] The worker is shutting down.
+2020-11-18 09:43:08.486 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-18 09:43:10.763 +02:00 [INF] Worker service is starting...
+2020-11-18 09:43:44.833 +02:00 [INF] Worker searched for: coffee
+2020-11-18 09:44:18.638 +02:00 [INF] Worker searched for: sport
+2020-11-18 09:44:42.829 +02:00 [INF] Worker searched for: tennis
+2020-11-18 13:41:15.396 +02:00 [INF] The worker is shutting down.
+2020-11-18 13:41:15.435 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-18 13:46:32.175 +02:00 [INF] Worker service is starting...
+2020-11-18 13:46:57.120 +02:00 [INF] Worker searched for: coffee
+2020-11-18 13:47:36.219 +02:00 [INF] Worker searched for: sport
+2020-11-18 13:48:11.920 +02:00 [INF] Worker searched for: tennis
+2020-11-19 12:04:40.071 +02:00 [INF] Worker service is starting...
+2020-11-19 12:05:20.048 +02:00 [INF] Worker searched for: coffee
+2020-11-19 12:06:09.214 +02:00 [INF] Worker searched for: sport
+2020-11-19 12:06:48.844 +02:00 [INF] Worker searched for: tennis
+2020-11-19 16:03:50.067 +02:00 [INF] The worker is shutting down.
+2020-11-19 16:03:50.101 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-19 16:03:52.417 +02:00 [INF] Worker service is starting...
+2020-11-19 16:04:11.934 +02:00 [INF] Worker searched for: coffee
+2020-11-19 16:05:03.974 +02:00 [INF] Worker searched for: sport
+2020-11-19 16:05:45.554 +02:00 [INF] Worker searched for: tennis
+2020-11-20 15:54:33.363 +02:00 [INF] Worker service is starting...
+2020-11-20 15:55:27.087 +02:00 [INF] Worker searched for: coffee
+2020-11-20 15:56:12.987 +02:00 [INF] Worker searched for: sport
+2020-11-20 15:56:59.092 +02:00 [INF] Worker searched for: tennis
+2020-11-25 15:43:17.498 +02:00 [INF] Worker service is starting...
+2020-11-25 15:47:27.247 +02:00 [INF] Worker service is starting...
+2020-11-25 15:47:53.405 +02:00 [INF] Worker searched for: coffee
+2020-11-25 15:49:00.543 +02:00 [INF] Worker searched for: sport
+2020-11-25 15:49:41.472 +02:00 [INF] Worker searched for: tennis
+2020-11-25 15:57:19.244 +02:00 [INF] The worker is shutting down.
+2020-11-25 15:57:19.281 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-26 10:21:23.037 +02:00 [INF] Worker service is starting...
+2020-11-26 10:22:47.232 +02:00 [INF] Worker searched for: coffee
+2020-11-26 10:23:52.497 +02:00 [INF] Worker searched for: sport
+2020-11-26 10:24:20.971 +02:00 [INF] Worker searched for: tennis
+2020-11-26 10:35:49.305 +02:00 [INF] The worker is shutting down.
+2020-11-26 10:35:49.344 +02:00 [FTL] The worker caught an exception.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at TestWorkService.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Administrator\Kiril\WorkerService\TestWorkService\Worker.cs:line 51
+2020-11-26 10:38:42.571 +02:00 [INF] Worker service is starting...
+2020-11-26 10:39:43.686 +02:00 [INF] Worker searched for: coffee
+2020-11-26 10:41:01.719 +02:00 [INF] Worker searched for: sport
+2020-11-26 10:41:39.305 +02:00 [INF] Worker searched for: tennis
+2020-11-26 12:22:02.517 +02:00 [INF] Worker service is starting...
+2020-11-26 12:22:56.792 +02:00 [INF] Worker searched for: coffee
+2020-11-26 12:24:13.951 +02:00 [INF] Worker searched for: sport
+2020-11-26 12:24:43.589 +02:00 [INF] Worker searched for: tennis
+2020-11-27 10:07:09.826 +02:00 [INF] Worker service is starting...
+2020-11-27 10:11:16.812 +02:00 [INF] Worker searched for: coffee
+2020-11-27 10:12:08.185 +02:00 [INF] Worker searched for: sport
+2020-11-27 10:12:51.613 +02:00 [INF] Worker searched for: tennis
