@@ -8975,11 +8975,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Kiril\\WorkerService\\TestWorkService\\TestWorkService.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Kiril\\repos\\WorkerService\\TestWorkService\\TestWorkService.csproj",
       "projectName": "TestWorkService",
-      "projectPath": "C:\\Users\\Administrator\\Kiril\\WorkerService\\TestWorkService\\TestWorkService.csproj",
+      "projectPath": "C:\\Users\\Administrator\\Kiril\\repos\\WorkerService\\TestWorkService\\TestWorkService.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Kiril\\WorkerService\\TestWorkService\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\Kiril\\repos\\WorkerService\\TestWorkService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",

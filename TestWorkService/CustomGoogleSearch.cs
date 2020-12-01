@@ -19,7 +19,7 @@ namespace TestWorkService
             string cx = "d64fde5f3edd155bf";
             string apiKey = "AIzaSyDRHs-hDvdcdvwZsbO_n3Iwlnk2oJM94pc";
 
-            
+            int[] positions = new int[] {1, 11, 21};
 
             string[] splitQueue = searchQueue.Split(' ');
 
@@ -33,16 +33,22 @@ namespace TestWorkService
             {
                 int index = 0;
 
-                for (int j = 1; j < 30; j += 10)
+                for (int j = 0; j < 3; j++)
                 {
+                   
                     try
                     {
-                        var request = await Task.Run(() => WebRequest.Create($"https://www.googleapis.com/customsearch/v1?key={apiKey}&cx={cx}&q={allPermutations[i]}&start={j}&num=10"));
-                        HttpWebResponse response = await Task.Run(() => (HttpWebResponse)request.GetResponse());
-                        Stream dataStream = response.GetResponseStream();
-                        StreamReader reader = new StreamReader(dataStream);
-                        string responseString = reader.ReadToEnd();
-                        dynamic jsonData = JsonConvert.DeserializeObject(responseString);
+                        dynamic jsonData = "";
+                        int pos = positions[j];
+                        await Task.Run(() => {
+                            var request = WebRequest.Create($"https://www.googleapis.com/customsearch/v1?key={apiKey}&cx={cx}&q={allPermutations[i]}&start={pos}&num=10");
+                            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                            Stream dataStream = response.GetResponseStream();
+                            StreamReader reader = new StreamReader(dataStream);
+                            string responseString = reader.ReadToEnd();
+                            jsonData = JsonConvert.DeserializeObject(responseString);
+                        });
+                       
 
                         foreach (var item in jsonData.items)
                         {
@@ -61,15 +67,13 @@ namespace TestWorkService
                     }
                     catch (Exception e)
                     {
-                        if (e is NotSupportedException | e is ArgumentNullException | e is UriFormatException)
-                        {
-                            Console.WriteLine(e.Message);      
-                        }
-                        
+                        Console.WriteLine(e.Message);
+                        Console.WriteLine(e.InnerException);
                     }
-                    
+
                 }
-                
+                Console.WriteLine($"Number of results: {index + 1}");
+
             }
         }
 

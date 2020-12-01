@@ -18,56 +18,65 @@ namespace TestWorkService.DataBase
         {
             using (var context = new SearchEngineContext())
             {
-                var getResult = context.LinkTracker.Where(r => r.Keywords.Equals(searchQueue) && r.Link.Equals(result.Link)).ToList();
-                List<string> externalLinks = await regexCrawler.CrawlLinks(result.Link);
-                if (getResult.Count == 0)
+                try
                 {
-                    context.LinkTracker.Add(new LinkPositionTracker
+                    var getResult = context.LinkTracker.Where(r => r.Keywords.Equals(searchQueue) && r.Link.Equals(result.Link)).ToList();
+                    List<string> externalLinks = await regexCrawler.CrawlLinks(result.Link);
+
+
+                    if (getResult.Count == 0)
+                    {
+                        context.LinkTracker.Add(new LinkPositionTracker
+                        {
+                            Keywords = searchQueue,
+                            Link = result.Link
+                        });
+                        context.LinkDetails.Add(new LinkDetails()
+                        {
+                            Link = result.Link,
+                            Title = result.Title,
+                            Snippet = result.Snippet,
+                            Index = result.Index
+                        });
+                    }
+
+                    var linkId = context.LinkDetails.Where(p => p.Link.Equals(result.Link)).Select(p => p.Id).FirstOrDefault();
+
+                    foreach (string link in externalLinks)
+                    {
+                        context.ExternalLinks.Add(new ExternalLinks
+                        {
+                            Id = linkId,
+                            date = DateTime.Now,
+                            externalLink = link
+                        });
+                    }
+
+                    string webString = webClient.DownloadString(result.Link);
+                    int wordCount = 0;
+                    double jsPercent = 0;
+                    double cssPercent = 0;
+                    string text = "";
+
+                    regexCrawler.getLinkStats(webString, ref cssPercent, ref jsPercent, ref wordCount, ref text);
+                    context.PositonAndDates.Add(new PositonAndDate
                     {
                         Keywords = searchQueue,
-                        Link = result.Link
-                    });
-                    context.LinkDetails.Add(new LinkDetails()
-                    {
                         Link = result.Link,
-                        Title = result.Title,
-                        Snippet = result.Snippet,
-                        Index = result.Index
+                        Position = result.Index + 1,
+                        WordCount = wordCount,
+                        Css = cssPercent,
+                        Js = jsPercent,
+                        MeaningfulText = text,
+                        Date = DateTime.Now
                     });
+                    context.SaveChanges();
                 }
-
-                var linkId = context.LinkDetails.Where(p => p.Link.Equals(result.Link)).Select(p => p.Id).FirstOrDefault();
-
-                foreach (string link in externalLinks)
+                catch (Exception e)
                 {
-                    context.ExternalLinks.Add(new ExternalLinks
-                    {
-                        Id = linkId,
-                        date = DateTime.Now,
-                        externalLink = link
-                    });
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.InnerException);
                 }
-
-                string webString = webClient.DownloadString(result.Link);
-                int wordCount = 0;
-                double jsPercent = 0;
-                double cssPercent = 0;
-                string text = "";
-
-                regexCrawler.getLinkStats(webString, ref cssPercent, ref jsPercent, ref wordCount, ref text);
-                context.PositonAndDates.Add(new PositonAndDate
-                {
-                    Keywords = searchQueue,
-                    Link = result.Link,
-                    Position = result.Index + 1,
-                    WordCount = wordCount,
-                    Css = cssPercent,
-                    Js = jsPercent,
-                    MeaningfulText = text,
-                    Date = DateTime.Now
-                });
-               
-                context.SaveChanges();
             }
         }
 
