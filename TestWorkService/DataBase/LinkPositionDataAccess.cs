@@ -14,6 +14,8 @@ namespace TestWorkService.DataBase
     {
         private RegexCrawler regexCrawler = new RegexCrawler();
         private WebClient webClient = new WebClient();
+        private List<string> metaTags = new List<string>();
+
         public async Task AddLink(Result result, string searchQueue)
         {
             using (var context = new SearchEngineContext())
@@ -70,6 +72,11 @@ namespace TestWorkService.DataBase
                         MeaningfulText = text,
                         Date = DateTime.Now
                     });
+
+                    metaTags = await regexCrawler.getAllMetaTags(result.Link);
+                    metaTags = removeSymbols(metaTags);
+                    addNoOfKeywordsFromText(result.Link, text, searchQueue);
+
                     context.SaveChanges();
                 }
                 catch (Exception e)
@@ -80,7 +87,90 @@ namespace TestWorkService.DataBase
             }
         }
 
+        private void addNoOfKeywordsFromText(string link, string compressedText, string searchQueue)
+        {
 
+            using (var context = new SearchEngineContext())
+            {
+                var linkId = context.LinkDetails.Where(p => p.Link.Equals(link)).Select(p => p.Id).FirstOrDefault();
+
+                string unzippedText = Zipper.Decompress(compressedText);
+                unzippedText = unzippedText.Replace(",", "");
+                unzippedText = unzippedText.Replace(".", "");
+                unzippedText = unzippedText.Replace("!", "");
+                unzippedText = unzippedText.Replace("?", "");
+                string[] splitText = unzippedText.Split(" ");
+
+                string[] separateKeyword = searchQueue.Split(" ");
+
+                for (int i = 0; i < separateKeyword.Length; i++)
+                {
+                    var matchQuery = from word in splitText
+                                     where word.ToLowerInvariant() == separateKeyword[i].ToLowerInvariant()
+                                     select word;
+                    int keywordCount = matchQuery.Count();
+                    
+                    Console.WriteLine($"{separateKeyword[i]} count: {keywordCount}");
+                   
+                    int noInMetaTags = getNoOfKeywordsFromMetaTags(metaTags, separateKeyword[i]);
+                    
+                    context.KeywordsInText.Add(new KeywordsInMeaningfulText
+                    {
+                        Id = linkId,
+                        keyword = separateKeyword[i],
+                        keywordsInText = keywordCount,
+                        keywordsInMetaTags = noInMetaTags,
+                        date = DateTime.Now
+                    });
+
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        private int getNoOfKeywordsFromMetaTags(List<string> metaTags, string keyword)
+        {
+            using (var context = new SearchEngineContext())
+            {
+
+                Console.WriteLine($"Number of meta tags: {metaTags.Count}");
+
+                if (metaTags.Count == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    int keywordCount = 0;
+                    foreach (string m in metaTags)
+                    {
+                        string[] metaContent = m.Split(" ");
+
+                        var matchQuery = from word in metaContent
+                                         where word.ToLowerInvariant() == keyword.ToLowerInvariant()
+                                         select word;
+                        keywordCount += matchQuery.Count();
+
+                    }
+                    Console.WriteLine($"{keyword} count from meta tags: {keywordCount}\n");
+                    return keywordCount;
+                }
+            }
+        }
+
+        private List<string> removeSymbols(List<string> metaTags)
+        {
+            var list = new List<string>();
+            foreach (string m in metaTags)
+            {
+                string newString = m.Replace(",", "");
+                newString = newString.Replace(".", "");
+                newString = newString.Replace("!", "");
+                newString = newString.Replace("?", "");
+                list.Add(newString);
+            }
+            return list;
+        }
 
         public string[] getAllKeywords()
         {

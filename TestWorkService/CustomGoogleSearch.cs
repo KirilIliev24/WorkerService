@@ -72,7 +72,7 @@ namespace TestWorkService
                     }
 
                 }
-                Console.WriteLine($"Number of results: {index + 1}");
+                Console.WriteLine($"Number of results: {index + 1} -------------------------------------------------");
 
             }
         }

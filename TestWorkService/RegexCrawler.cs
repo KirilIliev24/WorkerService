@@ -26,7 +26,7 @@ namespace TestWorkService
             }
             double mbStart = ((double)Encoding.Unicode.GetByteCount(webString) / 1048576);
             int websiteLenght = webString.Length;
-            Console.WriteLine(websiteLenght);
+            Console.WriteLine($"Lenght of website: {websiteLenght}");
 
             RegexOptions options = RegexOptions.IgnoreCase | RegexOptions.Singleline;
 
@@ -88,6 +88,26 @@ namespace TestWorkService
             }
             hashSet.Add("Link could NOT be crawled");
             return hashSet.ToList();
+        }
+
+        public async Task<List<string>> getAllMetaTags(string website)
+        {
+            var client = new HttpClient();
+            var websiteString = await client.GetStringAsync(website);
+            List<string> metaTags = new List<string>();
+
+            MatchCollection colection = await Task.Run(() => Regex.Matches(websiteString, "<meta .* content=\"(.*)\".*\\/>"));
+
+            for (int i = 0; i < colection.Count; i++)
+            {
+                string linkUrl = colection[i].Groups[1].Value;
+                metaTags.Add(linkUrl);
+            }
+            if (metaTags.Count == 0)
+            {
+                metaTags.Add("List was empty");
+            }
+            return metaTags;
         }
     }
 }

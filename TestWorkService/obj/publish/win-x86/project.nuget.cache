@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5Ze0XRbub7fUvwZ/t7Kgj1BqNuKLcQaJ4Su1TvcbCWmsKpkaoRVGfoJGX7vDAtOoWbj5syl9L9UqPxsQAh5FFg==",
+  "dgSpecHash": "CcZZ9juUWsKCDsOn3Fp270Rw6IpQ+BVDP3sLmkkE9vBs35bGBmKSpNnPun8oIR6jecx3F6ZQaI2IJdUmOjCtJg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Kiril\\WorkerService\\TestWorkService\\TestWorkService.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Kiril\\repos\\WorkerService\\TestWorkService\\TestWorkService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

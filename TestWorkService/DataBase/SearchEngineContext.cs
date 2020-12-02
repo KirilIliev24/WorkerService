@@ -21,6 +21,8 @@ namespace TestWorkService.DataBase
         public DbSet<LinkDetails> LinkDetails { get; set; }
         public DbSet<Keywords> Keywords { get; set; }
         public DbSet<ExternalLinks> ExternalLinks { get; set; }
+        public DbSet<KeywordsInMeaningfulText> KeywordsInText { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=C:\\USERS\\ADMINISTRATOR\\KIRIL\\SEARCHENGINE.MDF; Integrated Security=False; User ID=Koko;Password=koko2403; Trusted_Connection=False; Connection Timeout=120; MultipleActiveResultSets=true", 
