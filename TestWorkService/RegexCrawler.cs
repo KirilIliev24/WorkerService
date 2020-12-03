@@ -45,9 +45,11 @@ namespace TestWorkService
             double afterJs = ((double)Encoding.Unicode.GetByteCount(webString) / 1048576);
             double justJsRemoved = (mbStart - afterJs) - justCSS;//good
             jsPercent = (justJsRemoved) * 100.0 / mbStart;
-            
+
             //replace html tags
+            webString = Regex.Replace(webString, "<!*[^<>]*>", " ").Trim();
             webString = Regex.Replace(webString, "(<.*?>\\s*)+", " ").Trim();
+            webString = Regex.Replace(webString, "\\s+", " ");
 
             array = webString.Split(" ");
             wordCount = array.Length;
