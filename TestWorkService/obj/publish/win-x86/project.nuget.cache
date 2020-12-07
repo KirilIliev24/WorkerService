@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CcZZ9juUWsKCDsOn3Fp270Rw6IpQ+BVDP3sLmkkE9vBs35bGBmKSpNnPun8oIR6jecx3F6ZQaI2IJdUmOjCtJg==",
+  "dgSpecHash": "TSl1TFeAveY6+mygBDDE6W299a5qCpdXl+Hk8hkfATmUw5/EJs+8PfSZBzXjfqiGh+YhzyjYS+n6Kqvn7O785Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\Kiril\\repos\\WorkerService\\TestWorkService\\TestWorkService.csproj",
   "expectedPackageFiles": [
@@ -122,7 +122,7 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\runtime.win.system.net.primitives\\4.3.0\\runtime.win.system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\runtime.win.system.net.sockets\\4.3.0\\runtime.win.system.net.sockets.4.3.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\runtime.win.system.runtime.extensions\\4.3.0\\runtime.win.system.runtime.extensions.4.3.0.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\serilog\\2.9.0\\serilog.2.9.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\serilog.aspnetcore\\3.4.0\\serilog.aspnetcore.3.4.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\serilog.extensions.hosting\\3.1.0\\serilog.extensions.hosting.3.1.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\serilog.extensions.logging\\3.0.1\\serilog.extensions.logging.3.0.1.nupkg.sha512",

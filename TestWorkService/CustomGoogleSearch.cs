@@ -28,7 +28,7 @@ namespace TestWorkService
 
             //HashSet<Result> uniqueResults = new HashSet<Result>(new ResultComparer());
 
-
+            int linkNo = 1;
             for (int i = 0; i < allPermutations.Length; i++)
             {
                 int index = 0;
@@ -50,18 +50,24 @@ namespace TestWorkService
                         });
                        
 
+
                         foreach (var item in jsonData.items)
                         {
                             string link = item.link;
-
-                            await linkPosition.AddLink(new Result
+                            Console.WriteLine($"Link number {linkNo}");
+                            Console.WriteLine($"Link index {index}");
+                            linkNo++;
+                            if (isYoutube(link) == false)
                             {
-                                Title = item.title,
-                                Link = item.link,
-                                Snippet = item.snippet,
-                                Index = index
-                            }, searchQueue);//adds position and date also
-
+                                await linkPosition.AddLink(new Result
+                                {
+                                    Title = item.title,
+                                    Link = item.link,
+                                    Snippet = item.snippet,
+                                    Index = index
+                                }, searchQueue);//adds position and date also
+                            }
+                            
                             index++;
                         }
                     }
@@ -72,7 +78,7 @@ namespace TestWorkService
                     }
 
                 }
-                Console.WriteLine($"Number of results: {index + 1} -------------------------------------------------");
+                Console.WriteLine($"Number of results: {index} -------------------------------------------------");
 
             }
         }
@@ -123,5 +129,26 @@ namespace TestWorkService
             return final;
         }
 
+        private bool isYoutube(string link)
+        {
+            try
+            {
+                bool isYoutube;
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(link);
+                request.Method = "HEAD";
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    Console.WriteLine("Does this resolve to youtube?: {0}", response.ResponseUri.ToString().Contains("youtube.com") ? "Yes" : "No");
+                    isYoutube = response.ResponseUri.ToString().Contains("youtube.com") ? true : false;
+                }
+                return isYoutube;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.InnerException);
+                return false;
+            }  
+        }
     }
 }

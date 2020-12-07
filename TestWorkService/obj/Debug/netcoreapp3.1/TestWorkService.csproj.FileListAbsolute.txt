@@ -262,7 +262,6 @@ C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\bin\Debug\netco
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.ServiceProcess.ServiceController.dll
-C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netcoreapp3.1\TestWorkService.csprojAssemblyReference.cache
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netcoreapp3.1\TestWorkService.AssemblyInfoInputs.cache
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netcoreapp3.1\TestWorkService.AssemblyInfo.cs
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netcoreapp3.1\TestWorkService.csproj.CoreCompileInputs.cache
@@ -270,3 +269,4 @@ C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netco
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netcoreapp3.1\TestWorkService.dll
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netcoreapp3.1\TestWorkService.pdb
 C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netcoreapp3.1\TestWorkService.genruntimeconfig.cache
+C:\Users\Administrator\Kiril\repos\WorkerService\TestWorkService\obj\Debug\netcoreapp3.1\TestWorkService.csprojAssemblyReference.cache

@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.1.9",
           "Microsoft.Extensions.Hosting": "3.1.9",
           "Microsoft.Extensions.Hosting.WindowsServices": "3.1.9",
+          "Serilog": "2.10.0",
           "Serilog.AspNetCore": "3.4.0",
           "Serilog.Sinks.File": "4.1.0",
           "System.Configuration.ConfigurationManager": "4.7.0",
@@ -2183,11 +2184,11 @@
           "System.Private.Uri": "4.3.0"
         }
       },
-      "Serilog/2.9.0": {
+      "Serilog/2.10.0": {
         "runtime": {
-          "lib/netstandard2.0/Serilog.dll": {
+          "lib/netstandard2.1/Serilog.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.9.0.0"
+            "fileVersion": "2.10.0.0"
           }
         }
       },
@@ -2195,7 +2196,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "3.1.9",
           "Microsoft.Extensions.Logging": "3.1.9",
-          "Serilog": "2.9.0",
+          "Serilog": "2.10.0",
           "Serilog.Extensions.Hosting": "3.1.0",
           "Serilog.Formatting.Compact": "1.1.0",
           "Serilog.Settings.Configuration": "3.1.0",
@@ -2215,7 +2216,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9",
           "Microsoft.Extensions.Hosting.Abstractions": "3.1.9",
           "Microsoft.Extensions.Logging.Abstractions": "3.1.9",
-          "Serilog": "2.9.0",
+          "Serilog": "2.10.0",
           "Serilog.Extensions.Logging": "3.0.1"
         },
         "runtime": {
@@ -2228,7 +2229,7 @@
       "Serilog.Extensions.Logging/3.0.1": {
         "dependencies": {
           "Microsoft.Extensions.Logging": "3.1.9",
-          "Serilog": "2.9.0"
+          "Serilog": "2.10.0"
         },
         "runtime": {
           "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {
@@ -2239,7 +2240,7 @@
       },
       "Serilog.Formatting.Compact/1.1.0": {
         "dependencies": {
-          "Serilog": "2.9.0"
+          "Serilog": "2.10.0"
         },
         "runtime": {
           "lib/netstandard2.0/Serilog.Formatting.Compact.dll": {
@@ -2252,7 +2253,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyModel": "2.1.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "3.1.9",
-          "Serilog": "2.9.0"
+          "Serilog": "2.10.0"
         },
         "runtime": {
           "lib/netstandard2.0/Serilog.Settings.Configuration.dll": {
@@ -2263,7 +2264,7 @@
       },
       "Serilog.Sinks.Console/3.1.1": {
         "dependencies": {
-          "Serilog": "2.9.0",
+          "Serilog": "2.10.0",
           "System.Console": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
@@ -2277,7 +2278,7 @@
       },
       "Serilog.Sinks.Debug/1.0.1": {
         "dependencies": {
-          "Serilog": "2.9.0",
+          "Serilog": "2.10.0",
           "System.Diagnostics.Debug": "4.3.0"
         },
         "runtime": {
@@ -2289,7 +2290,7 @@
       },
       "Serilog.Sinks.File/4.1.0": {
         "dependencies": {
-          "Serilog": "2.9.0",
+          "Serilog": "2.10.0",
           "System.IO.FileSystem": "4.3.0",
           "System.Text.Encoding.Extensions": "4.3.0",
           "System.Threading.Timer": "4.3.0"
@@ -3990,12 +3991,12 @@
       "path": "runtime.win.system.runtime.extensions/4.3.0",
       "hashPath": "runtime.win.system.runtime.extensions.4.3.0.nupkg.sha512"
     },
-    "Serilog/2.9.0": {
+    "Serilog/2.10.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QzcrD33A3+CsVvwi1I5CSei67ikQnkGrw7SscgL+vZTghaC2aNYg8fiUcedXHzKJFNjgje9rBjzwYGQTKEaXaA==",
-      "path": "serilog/2.9.0",
-      "hashPath": "serilog.2.9.0.nupkg.sha512"
+      "sha512": "sha512-+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
+      "path": "serilog/2.10.0",
+      "hashPath": "serilog.2.10.0.nupkg.sha512"
     },
     "Serilog.AspNetCore/3.4.0": {
       "type": "package",

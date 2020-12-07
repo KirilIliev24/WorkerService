@@ -73,8 +73,9 @@ namespace TestWorkService.DataBase
                         Date = DateTime.Now
                     });
 
+                    metaTags.Clear();
                     metaTags = await regexCrawler.getAllMetaTags(result.Link);
-                    metaTags = removeSymbols(metaTags);
+                   
                     addNoOfKeywordsFromText(result.Link, text, searchQueue);
 
                     context.SaveChanges();
@@ -133,43 +134,38 @@ namespace TestWorkService.DataBase
             using (var context = new SearchEngineContext())
             {
 
-                Console.WriteLine($"Number of meta tags: {metaTags.Count}");
+                try
+                {
+                    Console.WriteLine($"Number of meta tags: {metaTags.Count}");
 
-                if (metaTags.Count == 0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    int keywordCount = 0;
-                    foreach (string m in metaTags)
+                    if (metaTags.Count == 0)
                     {
-                        string[] metaContent = m.Split(" ");
-
-                        var matchQuery = from word in metaContent
-                                         where word.ToLowerInvariant() == keyword.ToLowerInvariant()
-                                         select word;
-                        keywordCount += matchQuery.Count();
-
+                        return 0;
                     }
-                    Console.WriteLine($"{keyword} count from meta tags: {keywordCount}\n");
-                    return keywordCount;
-                }
-            }
-        }
+                    else
+                    {
+                        int keywordCount = 0;
+                        foreach (string m in metaTags)
+                        {
+                            string[] metaContent = m.Split(" ");
 
-        private List<string> removeSymbols(List<string> metaTags)
-        {
-            var list = new List<string>();
-            foreach (string m in metaTags)
-            {
-                string newString = m.Replace(",", "");
-                newString = newString.Replace(".", "");
-                newString = newString.Replace("!", "");
-                newString = newString.Replace("?", "");
-                list.Add(newString);
+                            var matchQuery = from word in metaContent
+                                             where word.ToLowerInvariant() == keyword.ToLowerInvariant()
+                                             select word;
+                            keywordCount += matchQuery.Count();
+
+                        }
+                        Console.WriteLine($"{keyword} count from meta tags: {keywordCount}\n");
+                        return keywordCount;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.InnerException);
+                }
+                return 0;
             }
-            return list;
         }
 
         public string[] getAllKeywords()

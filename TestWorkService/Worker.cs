@@ -53,6 +53,7 @@ namespace TestWorkService
                 catch (Exception e)
                 {
                     Log.Fatal(e, "The worker caught an exception.");
+                    Log.Fatal(e.Message);
                     return;
 
                 }
