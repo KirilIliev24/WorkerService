@@ -40,6 +40,7 @@ namespace TestWorkService.DataBase
                             Snippet = result.Snippet,
                             Index = result.Index
                         });
+                        context.SaveChanges();
                     }
 
                     var linkId = context.LinkDetails.Where(p => p.Link.Equals(result.Link)).Select(p => p.Id).FirstOrDefault();
